@@ -10,6 +10,7 @@ import {
 } from "../../utils/icons";
 import FormButton from "../../components/FormButton";
 import { ENDPOINTS, ROUTES } from "../../constants";
+import Logo from "@/app/components/Logo";
 
 const SignUp = () => {
   return (
@@ -17,12 +18,7 @@ const SignUp = () => {
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <div className="w-full max-w-md">
           <div className="flex justify-center mx-auto">
-            <Image
-              src="https://merakiui.com/images/logo.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-            />
+            <Logo width={250} height={91.7} />
           </div>
 
           <FormNavigation />
