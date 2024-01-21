@@ -1,21 +1,17 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { ENDPOINTS, ROUTES } from "./constants";
+import FormNavigation from "../../components/FormNavigation";
+import Form from "../../components/Form";
+import Input from "../../components/Input";
+import {
+  inputEmailIcon,
+  inputPasswordIcon,
+  inputUserIcon,
+} from "../../utils/icons";
+import FormButton from "../../components/FormButton";
+import { ENDPOINTS, ROUTES } from "../../constants";
 
-import FormNavigation from "./components/FormNavigation";
-import Form from "./components/Form";
-import Input from "./components/Input";
-import { inputEmailIcon, inputPasswordIcon } from "./utils/icons";
-import FormButton from "./components/FormButton";
-
-export default async function Home() {
-  const session = await getServerSession(authOptions);
-
-  if (session) redirect(ROUTES.DASHBOARD);
-
+const SignUp = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
@@ -31,7 +27,14 @@ export default async function Home() {
 
           <FormNavigation />
 
-          <Form endpoint={ENDPOINTS.AUTH_USER}>
+          <Form endpoint={ENDPOINTS.CREATE_USER}>
+            <Input
+              icon={inputUserIcon()}
+              type="text"
+              placeholder="Nombre de usuario"
+              name="username"
+              id="username"
+            />
             <Input
               icon={inputEmailIcon()}
               type="email"
@@ -43,19 +46,26 @@ export default async function Home() {
               icon={inputPasswordIcon()}
               type="password"
               placeholder="Contraseña"
-              name="password"
+              name="pass"
               id="pass"
             />
-            <FormButton text="Ingresar" />
+            <Input
+              icon={inputPasswordIcon()}
+              type="password"
+              placeholder="Repetir Contraseña"
+              name="passRepeat"
+              id="passRepeat"
+            />
+            <FormButton text="Registrar" />
           </Form>
 
           <div className="mt-6">
             <div className="mt-6 text-center ">
               <Link
-                href={ROUTES.SIGN_UP}
+                href={ROUTES.SIGN_IN}
                 className="text-sm text-blue-500 hover:underline dark:text-blue-400"
               >
-                ¿No tienes una cuenta?
+                ¿Ya tienes cuenta?
               </Link>
             </div>
           </div>
@@ -63,4 +73,5 @@ export default async function Home() {
       </div>
     </section>
   );
-}
+};
+export default SignUp;

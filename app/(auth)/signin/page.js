@@ -1,21 +1,13 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { ENDPOINTS, ROUTES } from "./constants";
+import FormNavigation from "../../components/FormNavigation";
+import Form from "../../components/Form";
+import Input from "../../components/Input";
+import { inputEmailIcon, inputPasswordIcon } from "../../utils/icons";
+import FormButton from "../../components/FormButton";
+import { ENDPOINTS, ROUTES } from "../../constants";
 
-import FormNavigation from "./components/FormNavigation";
-import Form from "./components/Form";
-import Input from "./components/Input";
-import { inputEmailIcon, inputPasswordIcon } from "./utils/icons";
-import FormButton from "./components/FormButton";
-
-export default async function Home() {
-  const session = await getServerSession(authOptions);
-
-  if (session) redirect(ROUTES.DASHBOARD);
-
+const SignIn = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
@@ -63,4 +55,5 @@ export default async function Home() {
       </div>
     </section>
   );
-}
+};
+export default SignIn;
