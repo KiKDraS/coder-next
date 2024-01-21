@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ENDPOINTS, ROUTES } from "./constants";
-
 import FormNavigation from "./components/FormNavigation";
 import Form from "./components/Form";
 import Input from "./components/Input";
 import { inputEmailIcon, inputPasswordIcon } from "./utils/icons";
 import FormButton from "./components/FormButton";
+import Logo from "./components/Logo";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -21,12 +21,7 @@ export default async function Home() {
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <div className="w-full max-w-md">
           <div className="flex justify-center mx-auto">
-            <Image
-              src="https://merakiui.com/images/logo.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-            />
+            <Logo width={250} height={91.7} />
           </div>
 
           <FormNavigation />

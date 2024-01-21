@@ -1,7 +1,6 @@
 "use client";
 
 import { api } from "@/firebase/api";
-import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 
 const Form = ({ endpoint, children }) => {

@@ -19,21 +19,7 @@ export const authOptions = {
   ],
   pages: {
     signIn: ROUTES.SIGN_IN,
+    signOut: ROUTES.SIGN_OUT,
     newUser: ROUTES.DASHBOARD,
-  },
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true;
-    },
-    async redirect({ url, baseUrl }) {
-      console.log(url);
-      return baseUrl;
-    },
-    async session({ session, user, token }) {
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token;
-    },
   },
 };

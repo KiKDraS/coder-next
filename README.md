@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Instrucciones para correr el proyecto en local
 
-## Getting Started
+Este proyecto usa la librería next-auth para manejar la sesión del usuario y
+controlar los accesos a las rutas.
 
-First, run the development server:
+Seguir los siguientes pasos para que el proyecto funcione:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Crear hash openssl desde la terminal usando el comando
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```jsx
+   openssl rand -base64 32
+   ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+2. Crear un archivo .env.local en el root del proyecto
+3. Almacenar el hash generado con la variable de ambiente NEXTAUTH_SECRET
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```jsx
+   NEXTAUTH_SECRET = HASH_CREADO;
+   ```
 
-## Learn More
+4. Agregar la variable de ambiente NEXTAUTH_URL con la url del proyecto
 
-To learn more about Next.js, take a look at the following resources:
+   ```jsx
+   NEXTAUTH_URL=http://localhost:3000
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. Correr el proyecto

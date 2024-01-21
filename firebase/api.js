@@ -1,5 +1,5 @@
-import { ENDPOINTS } from "@/app/constants";
-import { signIn } from "next-auth/react";
+import { ENDPOINTS, ROUTES } from "@/app/constants";
+import { signIn, signOut } from "next-auth/react";
 import {
   addUser,
   addUserFav,
@@ -17,7 +17,10 @@ export const api = async ({ endpoint, data }) => {
 
     case ENDPOINTS.CREATE_USER: {
       const { username, email, pass } = data;
-      return await addUser({ username, email, pass, role: "user" });
+      const user = { username, email, pass, role: "user" };
+      await addUser(user);
+      signIn("credentials", { ...user, callbackUrl: ROUTES.DASHBOARD });
+      break;
     }
 
     case ENDPOINTS.DELETE_USER: {
@@ -42,7 +45,12 @@ export const api = async ({ endpoint, data }) => {
     }
 
     case ENDPOINTS.AUTH_USER: {
-      signIn("credentials", data);
+      signIn("credentials", { ...data, callbackUrl: ROUTES.DASHBOARD });
+      break;
+    }
+
+    case ENDPOINTS.LOGOUT: {
+      signOut({ callbackUrl: ROUTES.SIGN_IN });
       break;
     }
 
