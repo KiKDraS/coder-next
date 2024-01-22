@@ -5,7 +5,7 @@ import { ROUTES } from "../constants";
 
 const FormNavigation = () => {
   const pathname = usePathname();
-  const home = pathname === ROUTES.SIGN_IN;
+  const home = pathname === ROUTES.SIGN_IN_PAGE;
   const signInStyles = home
     ? "border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
     : "border-b dark:border-gray-400 dark:text-gray-300";
@@ -23,7 +23,7 @@ const FormNavigation = () => {
       </Link>
 
       <Link
-        href={ROUTES.SIGN_UP}
+        href={ROUTES.SIGN_UP_PAGE}
         className={`w-1/3 pb-4 font-medium text-center text-gray-800 capitalize ${signUpStyles}`}
       >
         sign up

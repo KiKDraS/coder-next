@@ -11,7 +11,13 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="es" className="h-full bg-white">
-      <body className={`${rubik.className} h-full`}>{children}</body>
+      <body className={`${rubik.className} h-full`}>
+        {children}
+        <script
+          async
+          src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"
+        ></script>
+      </body>
     </html>
   );
 }
