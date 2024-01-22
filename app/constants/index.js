@@ -13,6 +13,7 @@ export const ROUTES = {
   SIGN_IN_PAGE: "/",
   SIGN_UP_PAGE: "/signup",
   SIGN_OUT_PAGE: "/signout",
+  DENIED_PAGE: "/denied",
   HOME_PAGE: "/home",
   USERS_PAGE: "/users",
   FAV_PAGE: "/favorites",
