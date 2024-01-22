@@ -13,13 +13,18 @@ export const authOptions = {
           (user) => user.email === email && user.pass === pass
         );
 
-        return user || null;
+        return user
+          ? {
+              ...user,
+              name: user?.username,
+            }
+          : null;
       },
     }),
   ],
   pages: {
-    signIn: ROUTES.SIGN_IN,
-    signOut: ROUTES.SIGN_OUT,
-    newUser: ROUTES.DASHBOARD,
+    signIn: ROUTES.SIGN_IN_PAGE,
+    signOut: ROUTES.SIGN_OUT_PAGE,
+    newUser: ROUTES.HOME_PAGE,
   },
 };

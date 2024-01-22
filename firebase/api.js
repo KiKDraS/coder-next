@@ -8,6 +8,7 @@ import {
   getUserFavs,
   getUsers,
 } from "./db.config";
+import { getUserImage } from "@/app/utils/getUserImage";
 
 export const api = async ({ endpoint, data }) => {
   switch (endpoint) {
@@ -17,9 +18,10 @@ export const api = async ({ endpoint, data }) => {
 
     case ENDPOINTS.CREATE_USER: {
       const { username, email, pass } = data;
-      const user = { username, email, pass, role: "user" };
+      const image = getUserImage();
+      const user = { username, email, pass, image, role: "user" };
       await addUser(user);
-      signIn("credentials", { ...user, callbackUrl: ROUTES.DASHBOARD });
+      signIn("credentials", { ...user, callbackUrl: ROUTES.HOME_PAGE });
       break;
     }
 
@@ -45,12 +47,12 @@ export const api = async ({ endpoint, data }) => {
     }
 
     case ENDPOINTS.AUTH_USER: {
-      signIn("credentials", { ...data, callbackUrl: ROUTES.DASHBOARD });
+      signIn("credentials", { ...data, callbackUrl: ROUTES.HOME_PAGE });
       break;
     }
 
     case ENDPOINTS.LOGOUT: {
-      signOut({ callbackUrl: ROUTES.SIGN_IN });
+      signOut({ callbackUrl: ROUTES.SIGN_IN_PAGE });
       break;
     }
 

@@ -10,9 +10,17 @@ export const ENDPOINTS = {
 };
 
 export const ROUTES = {
-  SIGN_IN: "/",
-  SIGN_UP: "/signup",
-  SIGN_OUT: "/signout",
-  DASHBOARD: "/dashboard",
-  ADMIN_PAGE: "/admin",
+  SIGN_IN_PAGE: "/",
+  SIGN_UP_PAGE: "/signup",
+  SIGN_OUT_PAGE: "/signout",
+  HOME_PAGE: "/home",
+  USERS_PAGE: "/users",
+  FAV_PAGE: "/favorites",
 };
+
+export const USER_IMAGES = [
+  "/pikachu.png",
+  "/bulbasaur.png",
+  "/charmander.png",
+  "/squirtle.png",
+];

@@ -14,7 +14,7 @@ import Logo from "./components/Logo";
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  if (session) redirect(ROUTES.DASHBOARD);
+  if (session) redirect(ROUTES.HOME_PAGE);
 
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -47,7 +47,7 @@ export default async function Home() {
           <div className="mt-6">
             <div className="mt-6 text-center ">
               <Link
-                href={ROUTES.SIGN_UP}
+                href={ROUTES.SIGN_UP_PAGE}
                 className="text-sm text-blue-500 hover:underline dark:text-blue-400"
               >
                 ¿No tienes una cuenta?

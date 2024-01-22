@@ -58,7 +58,7 @@ const SignUp = () => {
           <div className="mt-6">
             <div className="mt-6 text-center ">
               <Link
-                href={ROUTES.SIGN_IN}
+                href={ROUTES.SIGN_IN_PAGE}
                 className="text-sm text-blue-500 hover:underline dark:text-blue-400"
               >
                 ¿Ya tienes cuenta?
