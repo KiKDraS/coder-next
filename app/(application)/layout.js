@@ -17,8 +17,9 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 export default async function HomeLayout({ children }) {
   const session = await getServerSession(authOptions);
   const {
-    user: { name, email, image },
+    user: { name, email, image, role },
   } = session;
+  console.log(session);
 
   return (
     <>
@@ -115,13 +116,15 @@ export default async function HomeLayout({ children }) {
                 url={ROUTES.FAV_PAGE}
               />
             </li>
-            <li>
-              <NavLink
-                icon={UsersIcon()}
-                text="Usuarios"
-                url={ROUTES.USERS_PAGE}
-              />
-            </li>
+            {role === "admin" && (
+              <li>
+                <NavLink
+                  icon={UsersIcon()}
+                  text="Usuarios"
+                  url={ROUTES.USERS_PAGE}
+                />
+              </li>
+            )}
             <li className="absolute bottom-0 pb-4">
               <NavLink
                 icon={SignOutIcon()}
