@@ -19,7 +19,6 @@ export default async function HomeLayout({ children }) {
   const {
     user: { name, email, image, role },
   } = session;
-  console.log(session);
 
   return (
     <>

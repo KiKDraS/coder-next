@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { APP_IMAGES } from "../constants";
 
 const Logo = ({ width, height, classes = "" }) => {
   return (
     <Image
-      src="/logo.svg"
+      src={APP_IMAGES.LOGO}
       alt="Logo"
       width={width}
       height={height}

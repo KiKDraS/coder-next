@@ -19,9 +19,15 @@ export const ROUTES = {
   FAV_PAGE: "/favorites",
 };
 
+export const APP_IMAGES = {
+  LOGO: "/images/logo.svg",
+  PAGE_404: "/images/404.png",
+  PAGE_403: "/images/403.png",
+};
+
 export const USER_IMAGES = [
-  "/pikachu.png",
-  "/bulbasaur.png",
-  "/charmander.png",
-  "/squirtle.png",
+  "/images/pikachu.png",
+  "/images/bulbasaur.png",
+  "/images/charmander.png",
+  "/images/squirtle.png",
 ];
