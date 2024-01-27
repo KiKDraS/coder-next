@@ -16,6 +16,7 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 export default async function HomeLayout({ children }) {
   const session = await getServerSession(authOptions);
+
   const {
     user: { name, email, image, role },
   } = session;
@@ -135,7 +136,7 @@ export default async function HomeLayout({ children }) {
         </div>
       </aside>
 
-      <div className="p-4 h-full bg-slate-100 dark:bg-gray-700 sm:ml-64">
+      <div className="p-4 h-full bg-slate-100 dark:bg-gray-700 sm:ml-64 overflow-hidden">
         <div className="p-4 mt-14">{children}</div>
       </div>
     </>

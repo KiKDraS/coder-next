@@ -1,13 +1,6 @@
 import { ENDPOINTS, ROUTES } from "@/app/constants";
 import { signIn, signOut } from "next-auth/react";
-import {
-  addUser,
-  addUserFav,
-  deleteUser,
-  deleteUserFav,
-  getUserFavs,
-  getUsers,
-} from "./db.config";
+import { addUser, deleteUser, getUsers } from "./db.config";
 import { getUserImage } from "@/app/utils/getUserImage";
 
 export const api = async ({ endpoint, data }) => {
@@ -28,22 +21,6 @@ export const api = async ({ endpoint, data }) => {
     case ENDPOINTS.DELETE_USER: {
       const { id } = data;
       return await deleteUser(id);
-    }
-
-    case ENDPOINTS.GET_USER_FAVS: {
-      const { id } = data;
-      return await getUserFavs(id);
-    }
-
-    case ENDPOINTS.ADD_USER_FAV: {
-      const { image_url, name, type, userID } = data;
-      const pokemon = { image_url, name, type };
-      return await addUserFav({ pokemon, userID });
-    }
-
-    case ENDPOINTS.DELETE_USER_FAV: {
-      const { userID, pokemonID } = data;
-      return await deleteUserFav({ userID, pokemonID });
     }
 
     case ENDPOINTS.AUTH_USER: {
