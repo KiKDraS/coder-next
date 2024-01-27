@@ -1,16 +1,15 @@
 "use client";
 
-import { api } from "@/firebase/api";
+import { frontApi } from "@/firebase/frontApi";
 import React, { useState } from "react";
 
-const Form = ({ endpoint, method, children }) => {
+const Form = ({ endpoint, children }) => {
   const childrenArr = React.Children.toArray(children);
   const [form, setForm] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await api({ endpoint, data: form });
-    setForm(() => ({}));
+    await frontApi({ endpoint, data: form });
   };
 
   return (

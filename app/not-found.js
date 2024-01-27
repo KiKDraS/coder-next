@@ -1,5 +1,5 @@
 import { APP_IMAGES } from "./constants";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./components/server-side/ErrorPage";
 
 const NotFound = () => {
   return (

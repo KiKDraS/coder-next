@@ -1,4 +1,4 @@
-import ErrorPage from "@/app/components/ErrorPage";
+import ErrorPage from "@/app/components/server-side/ErrorPage";
 import { APP_IMAGES } from "@/app/constants";
 
 const Denied = () => {
@@ -7,11 +7,12 @@ const Denied = () => {
       imageConfig={{
         img_url: APP_IMAGES.PAGE_403,
         alt: "Página 403",
-        width: 500,
-        height: 500,
+        width: 200,
+        height: 200,
+        classes: "mb-8",
       }}
-      title="Hubo un problema"
-      text="No pudimos encontrar la página que estás buscando."
+      title="No tienes acceso a esta página"
+      text=""
     />
   );
 };

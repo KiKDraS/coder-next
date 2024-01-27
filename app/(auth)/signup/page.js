@@ -1,19 +1,23 @@
+import { DarkThemeToggle } from "flowbite-react";
 import Link from "next/link";
-import FormNavigation from "../../components/FormNavigation";
-import Form from "../../components/Form";
-import Input from "../../components/Input";
+import FormNavigation from "../../components/client-side/FormNavigation";
+import Form from "../../components/client-side/Form";
+import Input from "../../components/client-side/Input";
 import {
   inputEmailIcon,
   inputPasswordIcon,
   inputUserIcon,
 } from "../../utils/icons";
-import FormButton from "../../components/FormButton";
+import FormButton from "../../components/server-side/FormButton";
 import { ENDPOINTS, ROUTES } from "../../constants";
-import Logo from "@/app/components/Logo";
+import Logo from "@/app/components/server-side/Logo";
 
 const SignUp = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
+      <div className="p-4">
+        <DarkThemeToggle />
+      </div>
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <div className="w-full max-w-md">
           <div className="flex justify-center mx-auto">

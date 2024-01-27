@@ -1,15 +1,15 @@
+import { DarkThemeToggle } from "flowbite-react";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ENDPOINTS, ROUTES } from "./constants";
-import FormNavigation from "./components/FormNavigation";
-import Form from "./components/Form";
-import Input from "./components/Input";
+import FormNavigation from "./components/client-side/FormNavigation";
+import Form from "./components/client-side/Form";
+import Input from "./components/client-side/Input";
 import { inputEmailIcon, inputPasswordIcon } from "./utils/icons";
-import FormButton from "./components/FormButton";
-import Logo from "./components/Logo";
+import FormButton from "./components/server-side/FormButton";
+import Logo from "./components/server-side/Logo";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -18,6 +18,9 @@ export default async function Home() {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <div className="p-4">
+        <DarkThemeToggle />
+      </div>
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <div className="w-full max-w-md">
           <div className="flex justify-center mx-auto">

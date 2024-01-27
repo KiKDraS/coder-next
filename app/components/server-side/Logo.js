@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { APP_IMAGES } from "../constants";
+import { APP_IMAGES } from "../../constants";
 
 const Logo = ({ width, height, classes = "" }) => {
   return (

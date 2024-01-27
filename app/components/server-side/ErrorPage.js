@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ROUTES } from "../constants";
+import { ROUTES } from "../../constants";
 
 const ErrorPage = ({ imageConfig, title, text }) => {
-  const { img_url, alt, width, height } = imageConfig;
+  const { img_url, alt, width, height, classes } = imageConfig;
 
   return (
     <section className="bg-white h-full dark:bg-gray-900">
@@ -14,7 +14,7 @@ const ErrorPage = ({ imageConfig, title, text }) => {
             alt={alt}
             width={width}
             height={height}
-            className="mx-auto"
+            className={`mx-auto ${classes}`}
           />
           <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">
             {title}
