@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import FormNavigation from "../../components/FormNavigation";
 import Form from "../../components/Form";

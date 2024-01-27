@@ -3,7 +3,7 @@
 import { api } from "@/firebase/api";
 import React, { useState } from "react";
 
-const Form = ({ endpoint, children }) => {
+const Form = ({ endpoint, method, children }) => {
   const childrenArr = React.Children.toArray(children);
   const [form, setForm] = useState({});
 

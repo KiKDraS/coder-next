@@ -35,7 +35,7 @@ export const getUserFavs = async (userID) => {
   const snapshot = await getDocs(q);
 
   return snapshot.docs.map((doc) => ({
-    id: doc.id,
+    _id: doc.id,
     ...doc.data(),
   }));
 };
