@@ -2,7 +2,6 @@ export const ENDPOINTS = {
   GET_USERS: "/getUsers",
   CREATE_USER: "/createUser",
   DELETE_USER: "/deleteUser",
-  DELETE_USER_FAV: "/deleteUserFavs",
   AUTH_USER: "/authUser",
   LOGOUT: "/logout",
 };

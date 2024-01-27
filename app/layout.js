@@ -1,3 +1,4 @@
+import { ThemeModeScript } from "flowbite-react";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 
@@ -11,13 +12,10 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="es" className="h-full bg-white">
-      <body className={`${rubik.className} h-full`}>
-        {children}
-        <script
-          async
-          src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"
-        ></script>
-      </body>
+      <head>
+        <ThemeModeScript />
+      </head>
+      <body className={`${rubik.className} h-full`}>{children}</body>
     </html>
   );
 }

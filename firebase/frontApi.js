@@ -3,7 +3,7 @@ import { signIn, signOut } from "next-auth/react";
 import { addUser, deleteUser, getUsers } from "./db.config";
 import { getUserImage } from "@/app/utils/getUserImage";
 
-export const api = async ({ endpoint, data }) => {
+export const frontApi = async ({ endpoint, data }) => {
   switch (endpoint) {
     case ENDPOINTS.GET_USERS: {
       return await getUsers();

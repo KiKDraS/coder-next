@@ -1,5 +1,5 @@
-import Logo from "@/app/components/Logo";
-import SignOutButtons from "@/app/components/SignOutButtons";
+import Logo from "@/app/components/server-side/Logo";
+import SignOutButtons from "@/app/components/client-side/SignOutButtons";
 
 const SignOut = () => {
   return (

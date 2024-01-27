@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FavIcon } from "../utils/icons";
+import { FavIcon } from "../../utils/icons";
 import PokemonModal from "./PokemonModal";
 import { useState } from "react";
 
@@ -25,12 +25,20 @@ const deleteFromFavs = async (id, setFav) => {
   setFav(() => undefined);
 };
 
-const PokemonCard = ({ pokemon, isFav }) => {
+const PokemonCard = ({ pokemon, isFav, list = [], setList = null }) => {
   const { image, name, description } = pokemon;
   const [fav, setFav] = useState(isFav);
 
+  const handleDelete = async (id, setFav) => {
+    debugger;
+    if (list) {
+      await deleteFromFavs(id, setFav);
+      setList((prev) => prev.filter((pokemon) => pokemon._id !== id));
+    } else await deleteFromFavs(id, setFav);
+  };
+
   return (
-    <div className="items-center bg-slate-100 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+    <div className="items-center bg-slate-200 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
       <Image
         className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
         src={image}
@@ -49,9 +57,7 @@ const PokemonCard = ({ pokemon, isFav }) => {
           <li className="h-5">
             <button
               onClick={() =>
-                fav
-                  ? deleteFromFavs(fav._id, setFav)
-                  : addToFavs(pokemon, setFav)
+                fav ? handleDelete(fav._id, setFav) : addToFavs(pokemon, setFav)
               }
             >
               {FavIcon(
@@ -65,6 +71,8 @@ const PokemonCard = ({ pokemon, isFav }) => {
             <PokemonModal
               {...pokemon}
               addToFavs={() => addToFavs(pokemon, setFav)}
+              deleteFromFavs={() => handleDelete(fav._id, setFav)}
+              fav={fav}
             />
           </li>
         </ul>

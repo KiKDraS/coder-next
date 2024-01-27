@@ -1,4 +1,4 @@
-import PokemonsList from "@/app/components/PokemonsList";
+import PokemonsList from "@/app/components/client-side/PokemonsList";
 import { headers } from "next/headers";
 
 const getPokemons = async (offset = 0) => {
@@ -30,10 +30,10 @@ const UserHome = async () => {
 
   return (
     <section className="bg-white dark:bg-gray-900 overflow-hidden">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl max-h-screen lg:py-16 lg:px-6 overflow-hidden">
-        <div className="mx-auto max-w-screen-sm text-center h-[100%] overflow-hidden">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl max-h-screen lg:py-16 lg:px-6 overflow-hidden h-[85vh]">
+        <div className="mx-auto text-center overflow-hidden">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Busca tus favoritos
+            Lista completa
           </h2>
           <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
             Recorre la lista completa de pokemones y selecciona los que más te
