@@ -18,7 +18,7 @@ const SignUp = () => {
       <div className="p-4">
         <DarkThemeToggle />
       </div>
-      <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
+      <div className="container flex items-center justify-center height-70 px-6 mx-auto">
         <div className="w-full max-w-md">
           <div className="flex justify-center mx-auto">
             <Logo width={250} height={91.7} />

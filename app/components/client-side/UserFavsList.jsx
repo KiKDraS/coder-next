@@ -2,16 +2,19 @@
 
 import { useEffect, useRef, useState } from "react";
 import PokemonCard from "./PokemonCard";
-import { debounce } from "../../utils/debounce";
+import { getSubSet } from "../../utils/getSubset";
+import { debounce } from "@/app/utils/debounce";
 
-const PokemonsList = ({ pokemons = [], favorites = [], handleScroll }) => {
-  const [list, setList] = useState(() => pokemons);
+const UserFavsList = ({ pokemons }) => {
+  const [list, setList] = useState(() =>
+    getSubSet({ arr: pokemons, offset: 0, limit: 12 })
+  );
   const [offset, setOffset] = useState(0);
   const containerRef = useRef(null);
   const prevScrollY = useRef(0);
 
   const debounceScroll = debounce(async (offset) => {
-    const newPokemons = await handleScroll(offset);
+    const newPokemons = getSubSet({ arr: pokemons, offset, limit: 12 });
     setList((prev) => {
       return [...prev, ...newPokemons];
     });
@@ -29,29 +32,29 @@ const PokemonsList = ({ pokemons = [], favorites = [], handleScroll }) => {
         deltaY !== 0 &&
         Math.abs(scrollHeight - scrollTop - clientHeight) < tolerance
       ) {
-        const newOffset = offset + 12;
-
+        const newOffset = offset + 1;
         setOffset(() => newOffset);
         debounceScroll(newOffset);
       }
     }
     container.addEventListener("scroll", scrollFn);
     return () => container.removeEventListener("scroll", scrollFn);
-  }, [debounceScroll, handleScroll, offset]);
+  }, [debounceScroll, offset, pokemons]);
 
   return (
     <div
-      className="grid gap-8 lg:grid-cols-2 h-[65vh] overflow-y-scroll"
+      className="grid gap-8 lg:grid-cols-2 h-[65vh] overflow-y-auto"
       ref={containerRef}
     >
       {list.map((pokemon) => (
         <PokemonCard
           key={pokemon.name}
           pokemon={pokemon}
-          isFav={(() => favorites.find((fav) => fav?.name === pokemon?.name))()}
+          isFav={pokemon}
+          setList={setList}
         />
       ))}
     </div>
   );
 };
-export default PokemonsList;
+export default UserFavsList;

@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import NavLink from "../client-side/NavLink";
+import Link from "next/link";
 import {
   DarkThemeToggle,
   Avatar,
@@ -18,27 +18,32 @@ import { SignOutMiniIcon } from "@/app/utils/icons";
 export default function NavBar({ image, name, email }) {
   return (
     <Navbar fluid rounded className="relative z-50">
-      <NavbarBrand href={ROUTES.HOME_PAGE} className="flex gap-1 ms-2 md:me-24">
+      <div className="flex items-center">
         <DarkThemeToggle />
-        <Logo width={140} height={60} classes="ps-2" />
-      </NavbarBrand>
+        <NavbarBrand href={ROUTES.HOME_PAGE} className="flex ms-1 md:me-24">
+          <Logo width={140} height={60} classes="ps-2" />
+        </NavbarBrand>
+      </div>
       <div className="flex md:order-2 gap-2">
         <Dropdown
           arrowIcon={false}
           inline
           label={<Avatar alt="icono usuario" img={image} rounded />}
         >
-          <DropdownHeader className="z-50 text-base list-none bg-white rounded shadow dark:bg-gray-700 dark:divide-gray-600 me-3">
+          <DropdownHeader className="z-50 text-base list-none bg-white dark:bg-gray-700 dark:divide-gray-600 me-3">
             <span className="block text-sm font-bold uppercase">{name}</span>
             <span className="block truncate text-sm font-medium">{email}</span>
           </DropdownHeader>
-          <DropdownItem>
-            <NavLink
-              icon={SignOutMiniIcon()}
-              text="Salir"
-              url="/api/auth/signout"
-              classes="text-sm"
-            />
+          <DropdownItem className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
+            <Link
+              href="/api/auth/signout"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 group text-sm"
+            >
+              {SignOutMiniIcon(
+                "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
+              )}
+              <span className="flex-1 ms-3 whitespace-nowrap">Salir</span>
+            </Link>
           </DropdownItem>
         </Dropdown>
         <NavbarToggle />
