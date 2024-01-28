@@ -18,7 +18,7 @@ const Favorites = async () => {
 
   return (
     <section className="bg-white dark:bg-gray-900 overflow-hidden">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl max-h-screen lg:py-16 lg:px-6 overflow-hidden h-[90vh]">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl max-h-screen lg:py-16 lg:px-6 overflow-hidden h-[85vh]">
         <div className="mx-auto text-center overflow-hidden">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Pokemons favoritos

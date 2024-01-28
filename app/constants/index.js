@@ -1,7 +1,6 @@
 export const ENDPOINTS = {
   GET_USERS: "/getUsers",
   CREATE_USER: "/createUser",
-  DELETE_USER: "/deleteUser",
   AUTH_USER: "/authUser",
   LOGOUT: "/logout",
 };

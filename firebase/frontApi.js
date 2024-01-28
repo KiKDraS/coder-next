@@ -1,6 +1,6 @@
 import { ENDPOINTS, ROUTES } from "@/app/constants";
 import { signIn, signOut } from "next-auth/react";
-import { addUser, deleteUser, getUsers } from "./db.config";
+import { addUser, getUsers } from "./db.config";
 import { getUserImage } from "@/app/utils/getUserImage";
 
 export const frontApi = async ({ endpoint, data }) => {
@@ -16,11 +16,6 @@ export const frontApi = async ({ endpoint, data }) => {
       await addUser(user);
       signIn("credentials", { ...user, callbackUrl: ROUTES.HOME_PAGE });
       break;
-    }
-
-    case ENDPOINTS.DELETE_USER: {
-      const { id } = data;
-      return await deleteUser(id);
     }
 
     case ENDPOINTS.AUTH_USER: {

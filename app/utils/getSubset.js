@@ -1,5 +1,5 @@
-export const getSubSet = (arr, offset) => {
-  const start = offset * 12;
+export const getSubSet = ({ arr, offset, limit }) => {
+  const start = offset * limit;
 
-  return arr.slice(start, start + 12);
+  return arr.slice(start, start + limit);
 };

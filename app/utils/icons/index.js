@@ -73,9 +73,11 @@ export const SignOutIcon = () => (
   </svg>
 );
 
-export const SignOutMiniIcon = () => (
+export const SignOutMiniIcon = (
+  classes = "dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+) => (
   <svg
-    className="flex-shrink-0 w-4 h-4 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+    className={`flex-shrink-0 w-4 h-4 text-gray-500 transition duration-75  ${classes}`}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -142,5 +144,16 @@ export const HamburgerIcon = () => (
       fillRule="evenodd"
       d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
     ></path>
+  </svg>
+);
+
+export const DeleteUserIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 20 18"
+    className="flex-shrink-0 w-5 h-5 text-gray-500 hover:text-red-600 transition duration-75"
+  >
+    <path d="M10.375 2.25a4.125 4.125 0 1 0 0 8.25 4.125 4.125 0 0 0 0-8.25ZM10.375 12a7.125 7.125 0 0 0-7.124 7.247.75.75 0 0 0 .363.63 13.067 13.067 0 0 0 6.761 1.873c2.472 0 4.786-.684 6.76-1.873a.75.75 0 0 0 .364-.63l.001-.12v-.002A7.125 7.125 0 0 0 10.375 12ZM16 9.75a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5h-6Z" />
   </svg>
 );
