@@ -1,8 +1,8 @@
 "use client";
 
-import { frontApi } from "@/firebase/frontApi";
-import { ENDPOINTS } from "../../constants";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { ROUTES } from "@/app/constants";
 
 const SignOutButtons = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const SignOutButtons = () => {
       </button>
       <button
         className="py-2 px-3 text-sm font-medium text-center text-white  transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-        onClick={() => frontApi({ endpoint: ENDPOINTS.LOGOUT })}
+        onClick={() => signOut({ callbackUrl: ROUTES.SIGN_IN_PAGE })}
       >
         Salir
       </button>

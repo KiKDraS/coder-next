@@ -9,8 +9,33 @@ import {
   inputUserIcon,
 } from "../../utils/icons";
 import FormButton from "../../components/server-side/FormButton";
-import { ENDPOINTS, ROUTES } from "../../constants";
 import Logo from "@/app/components/server-side/Logo";
+import { addUser, getUsers } from "@/firebase/db.config";
+import { getUserImage } from "@/app/utils/getUserImage";
+import { ROUTES } from "@/app/constants";
+
+const signUpUser = async (data) => {
+  "use server";
+
+  const users = await getUsers();
+
+  const userEmailExists = users.find((user) => user.email === data.email);
+
+  if (userEmailExists)
+    return { error: true, text: "El email ya se encuentra registrado" };
+
+  const usernameExists = users.find((user) => user.username === data.username);
+
+  if (usernameExists)
+    return { error: true, text: "El nombre de usuario ya existe" };
+
+  const { username, email, pass } = data;
+  const image = getUserImage();
+  const user = { username, email, pass, image, role: "user" };
+  await addUser(user);
+
+  return user;
+};
 
 const SignUp = () => {
   return (
@@ -26,7 +51,7 @@ const SignUp = () => {
 
           <FormNavigation />
 
-          <Form endpoint={ENDPOINTS.CREATE_USER}>
+          <Form submitAction={signUpUser}>
             <Input
               icon={inputUserIcon()}
               type="text"

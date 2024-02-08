@@ -3,13 +3,28 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ENDPOINTS, ROUTES } from "./constants";
 import FormNavigation from "./components/client-side/FormNavigation";
 import Form from "./components/client-side/Form";
 import Input from "./components/client-side/Input";
 import { inputEmailIcon, inputPasswordIcon } from "./utils/icons";
 import FormButton from "./components/server-side/FormButton";
 import Logo from "./components/server-side/Logo";
+import { ROUTES } from "./constants";
+import { getUsers } from "@/firebase/db.config";
+
+const signInUser = async (data) => {
+  "use server";
+
+  const users = await getUsers();
+
+  const user = users.find(
+    (user) => user.email === data.email && user.pass === data.pass
+  );
+
+  return (
+    user || { error: true, text: "El email o la contraseña no son correctos" }
+  );
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -29,7 +44,7 @@ export default async function Home() {
 
           <FormNavigation />
 
-          <Form endpoint={ENDPOINTS.AUTH_USER}>
+          <Form submitAction={signInUser}>
             <Input
               icon={inputEmailIcon()}
               type="email"

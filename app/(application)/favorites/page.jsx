@@ -1,5 +1,7 @@
 import UserFavsList from "@/app/components/client-side/UserFavsList";
+import Spinner from "@/app/components/server-side/Spinner";
 import { headers } from "next/headers";
+import { Suspense } from "react";
 
 const getFavs = async () => {
   const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
@@ -27,7 +29,13 @@ const Favorites = async () => {
             Aquí encontrarás todos los Pokemon que seleccionaste
           </p>
         </div>
-        <UserFavsList pokemons={favorites} />
+        <Suspense
+          fallback={
+            <Spinner classes="h-full w-full bg-white dark:bg-gray-900 flex items-center justify-center" />
+          }
+        >
+          <UserFavsList pokemons={favorites} />
+        </Suspense>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import UsersTable from "@/app/components/client-side/UsersTable";
+import Spinner from "@/app/components/server-side/Spinner";
+import { Suspense } from "react";
 
 const getUsers = async () => {
   "use server";
@@ -27,7 +29,13 @@ const Users = async () => {
             Usa esta sección para revocar el acceso de los usuarios
           </p>
         </div>
-        <UsersTable users={users} />
+        <Suspense
+          fallback={
+            <Spinner classes="h-full w-full bg-white dark:bg-gray-900 flex items-center justify-center" />
+          }
+        >
+          <UsersTable users={users} />
+        </Suspense>
       </div>
     </section>
   );
