@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import { getSubSet } from "../../utils/getSubset";
 import { debounce } from "@/app/utils/debounce";
+import Image from "next/image";
 
 const UserFavsList = ({ pokemons }) => {
   const [list, setList] = useState(() =>
@@ -37,9 +38,22 @@ const UserFavsList = ({ pokemons }) => {
         debounceScroll(newOffset);
       }
     }
-    container.addEventListener("scroll", scrollFn);
-    return () => container.removeEventListener("scroll", scrollFn);
+    container?.addEventListener("scroll", scrollFn);
+    return () => container?.removeEventListener("scroll", scrollFn);
   }, [debounceScroll, offset, pokemons]);
+
+  if (list.length === 0) {
+    return (
+      <div className="relative flex flex-col gap-8 items-center h-[65vh]">
+        <h3 className="text-black dark:text-white">
+          ¿Qué estás esperando para elegirlos?
+        </h3>
+        <div className="max-w-[50%]">
+          <Image fill src="/images/favs.png" alt="varios pokemons" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
