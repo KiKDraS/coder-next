@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 const getPokemons = async (offset = 0) => {
   "use server";
   const pokemons = await fetch(
-    `https://${process.env.VERCEL_URL}/api/pokemons?offset=${offset}`
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/pokemons?offset=${offset}`
   );
 
   if (!pokemons.ok) throw new Error("Error fetching Pokemons list");
@@ -13,11 +13,14 @@ const getPokemons = async (offset = 0) => {
 };
 
 const getFavs = async () => {
-  const favs = await fetch(`https://${process.env.VERCEL_URL}/api/favs`, {
-    method: "GET",
-    headers: headers(),
-    next: { tags: ["favs"] },
-  });
+  const favs = await fetch(
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/favs`,
+    {
+      method: "GET",
+      headers: headers(),
+      next: { tags: ["favs"] },
+    }
+  );
 
   if (!favs.ok) throw new Error("Error fetching Favorites list");
 

@@ -7,10 +7,13 @@ import { Table } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 
 const deleteUser = async (id, setList) => {
-  const res = await fetch(`https://${process.env.VERCEL_URL}/api/users`, {
-    method: "DELETE",
-    body: JSON.stringify({ id }),
-  });
+  const res = await fetch(
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/users`,
+    {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+    }
+  );
 
   if (!res.ok) throw new Error("Error deleting user");
 

@@ -4,11 +4,14 @@ import { headers } from "next/headers";
 import { Suspense } from "react";
 
 const getFavs = async () => {
-  const favs = await fetch(`https://${process.env.VERCEL_URL}/api/favs`, {
-    method: "GET",
-    headers: headers(),
-    next: { tags: ["favs"] },
-  });
+  const favs = await fetch(
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/favs`,
+    {
+      method: "GET",
+      headers: headers(),
+      next: { tags: ["favs"] },
+    }
+  );
 
   if (!favs.ok) throw new Error("Error fetching Favorites list");
 
