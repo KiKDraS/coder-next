@@ -5,7 +5,7 @@ import { Suspense } from "react";
 const getUsers = async () => {
   "use server";
 
-  const users = await fetch(`${process.env.NEXTAUTH_URL}/api/users`, {
+  const users = await fetch(`https://${process.env.VERCEL_URL}/api/users`, {
     method: "GET",
     next: { tags: ["users"] },
   });

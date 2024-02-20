@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { Suspense } from "react";
 
 const getFavs = async () => {
-  const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
+  const favs = await fetch(`https://${process.env.VERCEL_URL}/api/favs`, {
     method: "GET",
     headers: headers(),
     next: { tags: ["favs"] },
