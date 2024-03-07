@@ -9,8 +9,6 @@ export const metadata = {
   description: "Busca y almacena a tus Pokemon favoritos",
 };
 
-export const dynamic = "force-dynamic";
-
 export default async function RootLayout({ children }) {
   return (
     <html lang="es" className="h-full bg-white">
