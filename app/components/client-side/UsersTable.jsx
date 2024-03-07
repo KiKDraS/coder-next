@@ -7,7 +7,7 @@ import { Table } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 
 const deleteUser = async (id, setList) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/users`, {
+  const res = await fetch(`${process.env.PUBLIC_URL}/api/users`, {
     method: "DELETE",
     body: JSON.stringify({ id }),
   });

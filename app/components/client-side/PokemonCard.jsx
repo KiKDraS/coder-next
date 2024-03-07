@@ -4,7 +4,7 @@ import PokemonModal from "./PokemonModal";
 import { useState } from "react";
 
 const addToFavs = async (pokemon, setFav) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
+  const res = await fetch(`${process.env.PUBLIC_URL}/api/favs`, {
     method: "POST",
     body: JSON.stringify(pokemon),
   });
@@ -15,7 +15,7 @@ const addToFavs = async (pokemon, setFav) => {
 };
 
 const deleteFromFavs = async (id, setFav) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
+  const res = await fetch(`${process.env.PUBLIC_URL}/api/favs`, {
     method: "DELETE",
     body: JSON.stringify({ id }),
   });
