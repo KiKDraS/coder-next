@@ -5,13 +5,10 @@ import { Suspense } from "react";
 const getUsers = async () => {
   "use server";
 
-  const users = await fetch(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/users`,
-    {
-      method: "GET",
-      next: { tags: ["users"] },
-    }
-  );
+  const users = await fetch(`${process.env.NEXTAUTH_URL}/api/users`, {
+    method: "GET",
+    next: { tags: ["users"] },
+  });
 
   if (!users.ok) throw new Error("Error fetching users");
 
