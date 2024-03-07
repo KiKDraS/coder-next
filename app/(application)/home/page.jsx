@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 const getPokemons = async (offset = 0) => {
   "use server";
   const pokemons = await fetch(
-    `${process.env.PUBLIC_URL}/api/pokemons?offset=${offset}`
+    `${process.env.NEXTAUTH_URL}/api/pokemons?offset=${offset}`
   );
 
   if (!pokemons.ok) throw new Error("Error fetching Pokemons list");
@@ -13,7 +13,7 @@ const getPokemons = async (offset = 0) => {
 };
 
 const getFavs = async () => {
-  const favs = await fetch(`${process.env.PUBLIC_URL}/api/favs`, {
+  const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
     method: "GET",
     headers: headers(),
     next: { tags: ["favs"] },
