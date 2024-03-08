@@ -3,6 +3,8 @@ import Spinner from "@/app/components/server-side/Spinner";
 import { headers } from "next/headers";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 const getFavs = async () => {
   const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
     method: "GET",

@@ -2,6 +2,8 @@ import UsersTable from "@/app/components/client-side/UsersTable";
 import Spinner from "@/app/components/server-side/Spinner";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 const getUsers = async () => {
   "use server";
 

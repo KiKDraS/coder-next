@@ -3,8 +3,6 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import NavBar from "../components/server-side/NavBar";
 import SideBar from "../components/server-side/SideBar";
 
-export const dynamic = "force-dynamic";
-
 export default async function HomeLayout({ children }) {
   const session = await getServerSession(authOptions);
 

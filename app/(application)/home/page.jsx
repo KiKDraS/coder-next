@@ -24,6 +24,8 @@ const getFavs = async () => {
   return await favs.json();
 };
 
+export const dynamic = "force-dynamic";
+
 const UserHome = async () => {
   const pokemons = await getPokemons();
   const favorites = await getFavs();
