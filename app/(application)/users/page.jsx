@@ -2,12 +2,10 @@ import UsersTable from "@/app/components/client-side/UsersTable";
 import Spinner from "@/app/components/server-side/Spinner";
 import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
-
 const getUsers = async () => {
   "use server";
 
-  const users = await fetch(`${process.env.NEXTAUTH_URL}/api/users`, {
+  const users = await fetch(`https://coder-next-tan.vercel.app/api/users`, {
     method: "GET",
     next: { tags: ["users"] },
   });

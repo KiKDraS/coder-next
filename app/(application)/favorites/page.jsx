@@ -3,10 +3,8 @@ import Spinner from "@/app/components/server-side/Spinner";
 import { headers } from "next/headers";
 import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
-
 const getFavs = async () => {
-  const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
+  const favs = await fetch(`https://coder-next-tan.vercel.app/api/favs`, {
     method: "GET",
     headers: headers(),
     next: { tags: ["favs"] },

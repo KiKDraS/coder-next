@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 const getPokemons = async (offset = 0) => {
   "use server";
   const pokemons = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/pokemons?offset=${offset}`
+    `https://coder-next-tan.vercel.app/api/pokemons?offset=${offset}`
   );
 
   if (!pokemons.ok) throw new Error("Error fetching Pokemons list");
@@ -13,7 +13,7 @@ const getPokemons = async (offset = 0) => {
 };
 
 const getFavs = async () => {
-  const favs = await fetch(`${process.env.NEXTAUTH_URL}/api/favs`, {
+  const favs = await fetch(`https://coder-next-tan.vercel.app/api/favs`, {
     method: "GET",
     headers: headers(),
     next: { tags: ["favs"] },
@@ -23,8 +23,6 @@ const getFavs = async () => {
 
   return await favs.json();
 };
-
-export const dynamic = "force-dynamic";
 
 const UserHome = async () => {
   const pokemons = await getPokemons();
