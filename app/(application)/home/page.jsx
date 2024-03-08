@@ -15,10 +15,9 @@ const getPokemons = async (offset = 0) => {
 };
 
 const getFavs = async () => {
-  const serverHeaders = headers();
   const favs = await fetch(`https://coder-next-tan.vercel.app/api/favs`, {
     method: "GET",
-    headers: { ...serverHeaders },
+    headers: headers(),
     next: { tags: ["favs"] },
   });
 

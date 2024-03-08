@@ -8,6 +8,7 @@ export async function GET() {
   const {
     user: { id },
   } = await getServerSession(authOptions);
+
   const userFavs = await getUserFavs(id);
 
   return NextResponse.json(userFavs);
