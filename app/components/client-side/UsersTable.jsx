@@ -7,7 +7,7 @@ import { Table } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 
 const deleteUser = async (id, setList) => {
-  const res = await fetch(`https://coder-next-tan.vercel.app/api/users`, {
+  const res = await fetch(`/api/users`, {
     method: "DELETE",
     body: JSON.stringify({ id }),
   });
@@ -73,7 +73,7 @@ const UsersTable = ({ users = [] }) => {
               <Table.Cell>{user.email}</Table.Cell>
               <Table.Cell>
                 <button
-                  onClick={() => deleteUser(user.id)}
+                  onClick={() => deleteUser(user.id, setList)}
                   className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
                 >
                   {DeleteUserIcon()}
