@@ -4,9 +4,12 @@ import { headers } from "next/headers";
 import { Suspense } from "react";
 
 const getFavs = async () => {
+  const cookie = headers().get("cookie");
   const favs = await fetch(`https://coder-next-tan.vercel.app/api/favs`, {
     method: "GET",
-    headers: headers(),
+    headers: {
+      Cookie: cookie,
+    },
     next: { tags: ["favs"] },
   });
 
